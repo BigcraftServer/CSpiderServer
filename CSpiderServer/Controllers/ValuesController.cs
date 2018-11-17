@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CSpiderServer.BLL.Services;
+using CSpiderServer.DAL;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CSpiderServer.Controllers
@@ -10,6 +12,11 @@ namespace CSpiderServer.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private UserService userService;
+        public ValuesController(UserService userService)
+        {
+            this.userService = userService;
+        }
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()

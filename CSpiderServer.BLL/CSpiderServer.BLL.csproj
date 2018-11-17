@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CSpiderServer.DAL\CSpiderServer.DAL.csproj" />
+    <ProjectReference Include="..\CSpiderServer.Models\CSpiderServer.Models.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -14,7 +14,15 @@
     <PackageReference Include="Grpc.Tools" Version="1.16.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.1.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CSpiderServer.BLL\CSpiderServer.BLL.csproj" />
+    <ProjectReference Include="..\CSpiderServer.DAL\CSpiderServer.DAL.csproj" />
+    <ProjectReference Include="..\CSpiderServer.Models\CSpiderServer.Models.csproj" />
   </ItemGroup>
 
 </Project>
