@@ -26,6 +26,24 @@ namespace CSpiderServer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            ConfigureSwagger(services);
+        }
+        /// <summary>
+        /// Configure Swagger
+        /// </summary>
+        /// <param name="services"></param>
+        private void ConfigureSwagger(IServiceCollection services) {
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info
+                {
+                    Version = "v1",
+                    Title = "CSpiderServer",
+                    Description = "A spider server",
+                    TermsOfService = "None",
+                    Contact = new Swashbuckle.AspNetCore.Swagger.Contact() { Name = "Big.guo", Email = "az999897@hotmail.com", Url = "www.google.com" }
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +60,14 @@ namespace CSpiderServer
 
             app.UseHttpsRedirection();
             app.UseMvc();
+            UseSwagger(app);
+        }
+        private void UseSwagger(IApplicationBuilder app) {
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "CSpiderServer V1");
+            });
         }
     }
 }
