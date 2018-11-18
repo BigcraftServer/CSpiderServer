@@ -8,11 +8,11 @@ namespace CSpiderServer.BLL.ResponseMessages
     {
         public SuccessMessage()
         {
-            Result = true;
+            IsSucceed = true;
         }
         public SuccessMessage(T data) : this()
         {
-            Data = data;
+            Result = data;
         }
 
         public SuccessMessage(T data, string message) : this(data)
@@ -20,9 +20,9 @@ namespace CSpiderServer.BLL.ResponseMessages
             Message = message;
         }
 
-        public T Data { get; set; }
+        public T Result { get; set; }
         public string Message { get; set; }
-        public bool Result { get; set; }
-        object IResponseMessage.Data { get { return Data; } set { Data = (T)value; } }
+        public bool IsSucceed { get; set; }
+        object IResponseMessage.Result { get { return Result; } set { Result = (T)value; } }
     }
 }

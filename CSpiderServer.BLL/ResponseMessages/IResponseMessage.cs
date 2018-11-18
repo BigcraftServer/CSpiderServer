@@ -6,12 +6,12 @@ namespace CSpiderServer.BLL.ResponseMessages
 {
     public interface IResponseMessage
     {
-        object Data { get; set; }
+        object Result { get; set; }
         string Message { get; set; }
-        bool Result { get; set; }
+        bool IsSucceed { get; set; }
     }
     public interface IResponseMessage<T> : IResponseMessage where T : class, new()
     {
-        T Data { get; set; }
+        T Result { get; set; }
     }
 }

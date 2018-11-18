@@ -8,7 +8,7 @@ namespace CSpiderServer.BLL.ResponseMessages
     {
         public FailureMessage()
         {
-            Result = false;
+            IsSucceed = false;
         }
 
         public FailureMessage(string message) : this()
@@ -17,11 +17,11 @@ namespace CSpiderServer.BLL.ResponseMessages
         }
         public FailureMessage(string message, object data) : this(message)
         {
-            Data = data;
+            Result = data;
         }
 
-        public object Data { get; set; }
+        public object Result { get; set; }
         public string Message { get; set; }
-        public bool Result { get; set; }
+        public bool IsSucceed { get; set; }
     }
 }

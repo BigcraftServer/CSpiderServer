@@ -10,5 +10,7 @@ namespace CSpiderServer.DAL
         public CSpiderContext(DbContextOptions<CSpiderContext> options) : base(options) { }
 
         public DbSet<Entities.User> Users { get; set; }
+        public DbSet<Entities.SpiderItem> SpiderItems { get; set; }
+        public DbSet<Entities.UserToken> UserTokens { get; set; }
     }
 }

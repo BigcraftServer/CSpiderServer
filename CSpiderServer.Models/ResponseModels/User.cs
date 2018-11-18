@@ -8,12 +8,12 @@ namespace CSpiderServer.Models.ResponseModels
     {
         public string Email { get; set; }
         public string Username { get; set; }
-        public static explicit operator User(DAL.Entities.User user)
+        public static explicit operator User(DAL.Entities.User item)
         {
             return new User()
             {
-                Email = user.Email,
-                Username = user.Username
+                Email = item.Email,
+                Username = item.Username
             };
         }
     }
