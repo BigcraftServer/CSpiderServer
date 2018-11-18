@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace CSpiderServer.DAL.Entities
+namespace CSpiderServer.Models.Entities
 {
     public class User : EntityBase
     {

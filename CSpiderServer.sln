@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSpiderServer.BLL", "CSpide
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSpiderServer.DAL", "CSpiderServer.DAL\CSpiderServer.DAL.csproj", "{5484A65D-6E7B-4212-A187-B83E89BCB3D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSpiderServer.Models", "CSpiderServer.Models\CSpiderServer.Models.csproj", "{4F2EBE13-DA66-4008-B852-A8C67593881F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSpiderServer.Models", "CSpiderServer.Models\CSpiderServer.Models.csproj", "{4F2EBE13-DA66-4008-B852-A8C67593881F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,5 +1,5 @@
 ﻿using CSpiderServer.BLL.ResponseMessages;
-using CSpiderServer.DAL.Entities;
+using CSpiderServer.Models.RequestModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,12 +14,12 @@ namespace CSpiderServer.BLL.Services
         {
             this.context = context;
         }
-        public IResponseMessage Save(Models.RequestModels.User user)
+        public IResponseMessage Save(User user)
         {
             bool isExist = context.Users.Any(c => c.Email.Equals(user.Email));
             if (!isExist)
             {
-                User savedObject = user;
+                Models.Entities.User savedObject = user;
                 savedObject.Id = Guid.NewGuid().ToString();
                 var result = context.Users.Add(user);
                 context.SaveChanges();

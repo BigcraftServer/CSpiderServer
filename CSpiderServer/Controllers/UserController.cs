@@ -5,6 +5,7 @@ using System.Net;
 using System.Threading.Tasks;
 using CSpiderServer.BLL.ResponseMessages;
 using CSpiderServer.BLL.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,6 +21,7 @@ namespace CSpiderServer.Controllers
             this._UserService = userService;
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(IResponseMessage<Models.ResponseModels.User>))]
         public IActionResult Create(Models.RequestModels.User user)

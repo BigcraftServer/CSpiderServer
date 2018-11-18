@@ -12,9 +12,9 @@ namespace CSpiderServer.Models.RequestModels
         public string Username { get; set; }
         public string Password { get; set; }
 
-        public static implicit operator DAL.Entities.User(User item)
+        public static implicit operator Entities.User(User item)
         {
-            return new DAL.Entities.User()
+            return new Entities.User()
             {
                 Id = item.Id,
                 Email = item.Email,

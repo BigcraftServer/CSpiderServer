@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using CSpiderServer.Models.RequestModels;
 
 namespace CSpiderServer.BLL.Services
 {
@@ -13,12 +14,12 @@ namespace CSpiderServer.BLL.Services
         {
             this.context = context;
         }
-        public IResponseMessage Create(Models.RequestModels.User user)
+        public IResponseMessage Create(User user)
         {
-            DAL.Entities.User userEntity = user;
+            Models.Entities.User userEntity = user;
             if (context.Users.Any(c => c.Email.Equals(userEntity.Email, StringComparison.CurrentCultureIgnoreCase) && c.Password.Equals(userEntity.Password)))
             {
-                DAL.Entities.UserToken userToken = new DAL.Entities.UserToken()
+                Models.Entities.UserToken userToken = new Models.Entities.UserToken()
                 {
                     Id = Guid.NewGuid().ToString(),
                     IsDeleted = false,

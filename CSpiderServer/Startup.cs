@@ -14,6 +14,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
+using CSpiderServer.Filters;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CSpiderServer
 {
@@ -29,7 +31,21 @@ namespace CSpiderServer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc(o =>
+            {
+                var policy = new AuthorizationPolicyBuilder()
+                    .RequireAuthenticatedUser()
+                    .Build();
+                o.Filters.Add(new AuthorizeFilter(policy));
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddAuthentication(options =>
+            {
+                // the scheme name has to match the value we're going to use in AuthenticationBuilder.AddScheme(...)
+                options.DefaultAuthenticateScheme = "Default";
+                options.DefaultChallengeScheme = "Default";
+            });
+
             ConfigureDbContext(services);
             ConfigureServicesDI(services);
             ConfigureSwagger(services);
@@ -39,6 +55,7 @@ namespace CSpiderServer
         {
             services.AddSwaggerGen(c =>
             {
+                c.CustomSchemaIds(d => d.FullName);
                 c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info
                 {
                     Version = "v1",
@@ -55,7 +72,8 @@ namespace CSpiderServer
             var connectionString = Configuration.GetConnectionString("CSpider");
             services.AddDbContextPool<CSpiderContext>(options => options.UseMySql(connectionString));
         }
-        private void ConfigureServicesDI(IServiceCollection services) {
+        private void ConfigureServicesDI(IServiceCollection services)
+        {
             services.AddScoped<UserService>();
             services.AddScoped<TokenService>();
         }
@@ -73,6 +91,7 @@ namespace CSpiderServer
             }
 
             app.UseHttpsRedirection();
+            app.UseAuthentication();
             app.UseMvc();
             UseSwagger(app);
         }

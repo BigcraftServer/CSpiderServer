@@ -11,9 +11,9 @@ namespace CSpiderServer.Models.RequestModels
         public string UserId { get; set; }
         public string Script { get; set; }
 
-        public static implicit operator DAL.Entities.SpiderItem(SpiderItem item)
+        public static implicit operator Entities.SpiderItem(SpiderItem item)
         {
-            return new DAL.Entities.SpiderItem()
+            return new Entities.SpiderItem()
             {
                 Id = item.Id,
                 Name = item.Name,

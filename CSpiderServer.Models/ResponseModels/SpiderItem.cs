@@ -9,7 +9,7 @@ namespace CSpiderServer.Models.ResponseModels
         public string Id { get; set; }
         public string Name { get; set; }
         public string Script { get; set; }
-        public static explicit operator SpiderItem(DAL.Entities.SpiderItem item)
+        public static explicit operator SpiderItem(Entities.SpiderItem item)
         {
             return new SpiderItem()
             {

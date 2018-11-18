@@ -8,7 +8,7 @@ namespace CSpiderServer.Models.ResponseModels
     {
         public string Id { get; set; }
         public string UserId { get; set; }
-        public static explicit operator UserToken(DAL.Entities.UserToken item)
+        public static explicit operator UserToken(Entities.UserToken item)
         {
             return new UserToken()
             {

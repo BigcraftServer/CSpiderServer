@@ -8,4 +8,8 @@
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.1.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CSpiderServer.Models\CSpiderServer.Models.csproj" />
+  </ItemGroup>
+
 </Project>
